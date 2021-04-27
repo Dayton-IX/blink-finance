@@ -1,4 +1,4 @@
-import { Colors } from "../../constants/colors";
+import { Colors } from "../../constants/Colors";
 import { Logo, UserPlaceholder } from "../../constants/svgLib";
 
 const Navbar = () => {

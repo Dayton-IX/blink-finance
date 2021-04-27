@@ -1,5 +1,5 @@
 import { ReactChildren, useState } from "react";
-import { Colors } from "../../constants/colors";
+import { Colors } from "../../constants/Colors";
 import Navbar from "./Navbar";
 
 type Props = {
