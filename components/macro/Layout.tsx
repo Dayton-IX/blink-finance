@@ -1,24 +1,22 @@
-import { AppProps } from 'next/dist/next-server/lib/router/router'
-import Head from 'next/head'
-import { useState } from 'react'
-import { Colors } from '../constants/colors';
-import '../styles/globals.css'
+import { ReactChildren, useState } from "react";
+import { Colors } from "../../constants/colors";
+import Navbar from "./Navbar";
 
-function MyApp({ Component, pageProps }: AppProps) {
-	const [dark, setDark] = useState(false);
+type Props = {
+    children: any
+}
 
-	return (
-		<>
-			<Head>
-				<link rel="preconnect" href="https://fonts.gstatic.com" />
-				<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&display=swap" rel="stylesheet" />
-				<title>Blink Finance</title>
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
+const Layout = ({children}: Props) => {
+    const [dark, setDark] = useState(false)
 
-			<Component {...pageProps} />
+    return (
+        <div>
+            <Navbar />
+            <main className="w-max py-2 px-3">
+                {children}
+            </main>
 
-			<style global jsx>{`
+            <style global jsx>{`
                 :root {
 					background-color: ${dark ? Colors.dark.bgMain : Colors.light.bgMain};
                     transition: all 0.3s;
@@ -41,10 +39,10 @@ function MyApp({ Component, pageProps }: AppProps) {
                     background-color: ${dark ? Colors.light.bgTertiary : Colors.dark.bgTertiary};
                     border-radius: 20px;
                     border: 3px solid ${dark ? Colors.dark.bgMain : Colors.light.bgMain};
-                }
+                }    
             `}</style>
-		</>
-	)
-}
+        </div>
+    )
+};
 
-export default MyApp
+export default Layout;
