@@ -6,13 +6,15 @@ export const Colors = {
         bgSecondary: '#16191C',
         bgTertiary: '#282E34',
         textMain: '#FFFFFF',
-        textSecondary: '#DEDEDE'
+        textSecondary: '#DEDEDE',
+        textDark: '#606060'
     },
     light: {
         bgMain: '#1E2327',
         bgSecondary: '#16191C',
         bgTertiary: '#282E34',
         textMain: '#FFFFFF',
-        textSecondary: '#DEDEDE'
+        textSecondary: '#DEDEDE',
+        textDark: '#606060'
     },
 }

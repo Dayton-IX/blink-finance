@@ -12,7 +12,7 @@ const Layout = ({children}: Props) => {
     return (
         <div>
             <Navbar />
-            <main className="w-max py-2 px-3">
+            <main className="w-full py-2 px-3">
                 {children}
             </main>
 
