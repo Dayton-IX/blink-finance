@@ -1,7 +1,5 @@
-import Head from 'next/head'
 import { useState } from 'react'
 import Layout from '../components/macro/Layout'
-import Navbar from '../components/macro/Navbar'
 import LineHeader from '../components/micro/LineHeader'
 
 enum GreetingTime {
