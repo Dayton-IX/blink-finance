@@ -1,8 +1,9 @@
 import { AppProps } from 'next/dist/next-server/lib/router/router'
 import Head from 'next/head'
 import { useState } from 'react'
-import { Colors } from '../constants/Colors';
+import { Colors } from '../constants/Colors'
 import '../styles/globals.css'
+import NextNProgress from 'nextjs-progressbar'
 
 function MyApp({ Component, pageProps }: AppProps) {
 	const [dark, setDark] = useState(false);
@@ -16,13 +17,14 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
+            <NextNProgress color={Colors.accentMain} />
 			<Component {...pageProps} />
 
 			<style global jsx>{`
                 :root {
 					background-color: ${dark ? Colors.dark.bgMain : Colors.light.bgMain};
                     transition: all 0.3s;
-                    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+                    font-family: 'Fira Code', monospace, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
                     scrollbar-width: thin;
                     scrollbar-color: ${dark ? Colors.light.bgTertiary : Colors.dark.bgTertiary} ${dark ? Colors.dark.bgMain : Colors.light.bgMain};
 				}

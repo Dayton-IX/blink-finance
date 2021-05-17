@@ -6,6 +6,8 @@ module.exports = {
     colors: {
       accentMain: '#76BB86',
       accentSecondary: '#B0DAB9',
+      redMain: '#BC4646',
+      redLight: '#D66565',
       dark: {
           bgMain: '#1E2327',
           bgSecondary: '#16191C',

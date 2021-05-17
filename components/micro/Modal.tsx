@@ -16,14 +16,14 @@ const Modal = ({children, open, onClose}: Props) => (
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: 0.1 }}
             >
                 <motion.div className="rounded-t-sm bg-light-bgSecondary dark:bg-dark-bgSecondary absolute h-full w-screen bottom-0 z-50"
                     key="drawer" 
                     initial={{ y: 1000 }}
                     animate={{ y: 0 }}
                     exit={{ y: 1000 }}
-                    transition={{ duration: 0.2 }}
+                    transition={{ y: { type: 'spring', stiffness: 500, damping: 50 } }}
                 >
                     <button key="closeButton" onClick={() => onClose()} className="focus:outline-none p-3 absolute top-1 right-1">
                         <Close color={Colors.accentMain} width={26} height={26} />
