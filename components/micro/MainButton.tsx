@@ -12,42 +12,9 @@ type Props = {
 
 const MainButton = ({ className, style, children, onClick, disabled=false, loading=false }: Props) => {
     return (
-        <button disabled={disabled} onClick={() => onClick()} className={className} style={style}>
+        <button disabled={disabled} onClick={() => onClick()} className={`${className} text-light-textMain text-lg p-3 bg-gradient-to-br from-accentMain to-accentSecondary my-2 flex flex-col justify-between rounded-lg transition-all focus:ring-2 focus:outline-none ring-accentSecondary hover:ring-1`} style={style}>
             {loading ? <Logo className="animate-spin mr-2" color={Colors.dark.textMain} /> : null}
             {children}
-            <style jsx>{`
-                button {
-                    background: linear-gradient(82.79deg, ${Colors.accentMain} 40%, ${Colors.accentSecondary} 97.96%);
-                    border-radius: 5px;
-                    color: ${Colors.dark.textMain};
-                    padding: 8px 15px;
-                    transition: all 0.1s linear;
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: center;
-                }
-                button:disabled {
-                    filter: grayscale(1);
-                }
-                button:disabled:hover {
-                    transform: none;
-                    box-shadow: none;
-                }
-                button:disabled:active {
-                    transform: none;
-                    box-shadow: none;
-                }
-                button:hover {
-                    box-shadow: 0px 3px 9px -2px rgba(119, 192, 69, 0.7);
-                    background-position-x: 30%;
-                    transform: translateY(-1px)
-                }
-                button:active {
-                    transition: all 0.1s;
-                    transform: translateY(1px);
-                    box-shadow: none;
-                }
-            `}</style>
         </button>
     )
 };

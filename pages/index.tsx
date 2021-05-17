@@ -51,7 +51,7 @@ const Home = () => {
 			<div className="flex flex-col mt-8">
 				<span className="flex flex-row">
 					<h2 className="text-light-textMain dark:text-dark-textMain text-xl ">Categories</h2>
-					<button className="ml-3"><Edit color={Colors.accentMain} /></button>
+					<button className="ml-3 focus:outline-none"><Edit color={Colors.accentMain} /></button>
 				</span>
 				<div className="bg-light-bgSecondary dark:bg-dark-bgSecondary rounded-lg p-5 mt-5 grid grid-flow-row grid-cols-3">
 					{categories.map(category => {
