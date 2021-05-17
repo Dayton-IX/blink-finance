@@ -11,10 +11,18 @@ function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<>
 			<Head>
+                <meta charSet='utf-8' />
+                <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
+                <meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no' />
+                <meta name='description' content='Blink Finance is the best way to stay on top of your budget!' />
 				<link rel="preconnect" href="https://fonts.gstatic.com" />
 				<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&display=swap" rel="stylesheet" />
 				<title>Blink Finance</title>
 				<link rel="icon" href="/favicon.ico" />
+                <link rel="manifest" href="/manifest.json" />
+                <meta name="theme-color" content={Colors.dark.bgMain} />
+                <link rel="apple-touch-icon" href="/assets/Icon192.png" />
+                <meta name="apple-mobile-web-app-status-bar" content={Colors.accentSecondary} />
 			</Head>
 
             <NextNProgress color={Colors.accentMain} />
