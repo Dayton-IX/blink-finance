@@ -30,13 +30,19 @@ const Home = () => {
 		},
 		{
 			id: '3',
-			name: 'Misc',
+			name: 'Gas',
 			monthlyAmount: 50,
 			remainingAmount: 20
 		},
 		{
 			id: '4',
-			name: 'Gas',
+			name: 'Investments',
+			monthlyAmount: 50,
+			remainingAmount: 20
+		},
+		{
+			id: '5',
+			name: 'Other',
 			monthlyAmount: 100,
 			remainingAmount: 30
 		},
