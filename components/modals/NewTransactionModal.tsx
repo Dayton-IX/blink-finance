@@ -35,9 +35,20 @@ const NewTransactionModal = ({open, onClose}: Props) => {
                 <div className="flex flex-row justify-between w-11/12 mx-auto mt-5 items-center">
                     <label htmlFor="category" className="text-accentMain text-lg">Category</label>
                     <select id="category" className="bg-transparent text-light-textSecondary dark:text-dark-textSecondary text-lg text-right">
-                        {expenseCategories.map((category) => (
-                            <option>{category}</option>
-                        ))}
+                        {type === TransactionType.INCOME ? 
+                            <>
+                                <option>Income</option>
+                                <option>Gift</option>
+                                <option>Investment</option>
+                                <option>Other</option>
+                            </>
+                        : 
+                            <>
+                                {expenseCategories.map((category) => (
+                                    <option>{category}</option>
+                                ))}
+                            </>
+                        }
                     </select>
                 </div>
                 <div className="flex flex-row justify-between w-11/12 mx-auto mt-5 items-center">
