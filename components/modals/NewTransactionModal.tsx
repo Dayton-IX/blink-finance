@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Modal from "../micro/Modal";
 import NumberFormat from "react-number-format"
+import MainButton from "../micro/MainButton"
 
 type Props = {
     open: boolean
@@ -22,6 +23,11 @@ const NewTransactionModal = ({open, onClose}: Props) => {
         "Investments",
         "Other"
     ])
+    const [memo, setMemo] = useState('')
+
+    const onSaveTransaction = async () => {
+
+    }
 
     return (
         <Modal open={open} onClose={() => onClose()}>
@@ -60,6 +66,11 @@ const NewTransactionModal = ({open, onClose}: Props) => {
                         <option>Yearly</option>
                     </select>
                 </div>
+                <div className="flex flex-col text-center items-center mx-auto w-11/12 mt-3">
+                    <label htmlFor="memo" className="text-accentMain text-lg my-3">Memo</label>
+                    <textarea onChange={(e) => setMemo(e.target.value)} id="memo" rows={4} className="text-light-textMain dark:text-dark-textMain bg-light-bgTertiary dark:bg-dark-bgTertiary rounded-lg p-2 w-11/12" placeholder="Memo..." /> 
+                </div>
+                <MainButton onClick={() => onSaveTransaction()} className="mx-auto mt-10">Save Transaction</MainButton>
             </form>
         </Modal>
     )
