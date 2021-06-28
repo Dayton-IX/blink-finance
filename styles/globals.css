@@ -5,3 +5,7 @@
 * {
     font-family: 'Fira Code', monospace;
 }
+
+html, body {
+    overflow-x: hidden;
+}

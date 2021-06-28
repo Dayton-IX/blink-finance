@@ -40,7 +40,7 @@ const NewTransactionModal = ({open, onClose}: Props) => {
                 </div>
                 <NumberFormat value={transactionValue} onValueChange={(values) => setTransactionValue(parseFloat(values.value))} className={`flex flex-row items-center justify-center mx-auto p-5 focus:outline-none ${type === TransactionType.INCOME ? "text-accentMain" : "text-redLight"} text-4xl w-5/6 mt-10 bg-transparent text-center transition-all`} allowNegative={false} decimalScale={2} fixedDecimalScale thousandSeparator allowEmptyFormatting placeholder="0.00" prefix={`${type === TransactionType.INCOME ? '+' : '-'}$`} />
                 <div className="flex flex-row justify-between w-11/12 mx-auto mt-5 items-center">
-                    <label htmlFor="category" className={`${type === TransactionType.INCOME ? "text-accentMain" : "text-redMain"} text-lg`}>Category</label>
+                    <label htmlFor="category" className={`${type === TransactionType.INCOME ? "text-accentMain" : "text-redLight"} text-lg`}>Category</label>
                     <select id="category" className="bg-transparent text-light-textSecondary dark:text-dark-textSecondary text-lg text-right">
                         {type === TransactionType.INCOME ? 
                             <>
@@ -59,7 +59,7 @@ const NewTransactionModal = ({open, onClose}: Props) => {
                     </select>
                 </div>
                 <div className="flex flex-row justify-between w-11/12 mx-auto mt-5 items-center">
-                    <label htmlFor="frequency" className={`${type === TransactionType.INCOME ? "text-accentMain" : "text-redMain"} text-lg`}>Frequency</label>
+                    <label htmlFor="frequency" className={`${type === TransactionType.INCOME ? "text-accentMain" : "text-redLight"} text-lg`}>Frequency</label>
                     <select id="frequency" className="bg-transparent text-light-textSecondary dark:text-dark-textSecondary text-lg text-right">
                         <option>One Time</option>
                         <option>Monthly</option>
@@ -68,7 +68,7 @@ const NewTransactionModal = ({open, onClose}: Props) => {
                     </select>
                 </div>
                 <div className="flex flex-col text-center items-center mx-auto w-11/12 mt-3">
-                    <label htmlFor="memo" className={`${type === TransactionType.INCOME ? "text-accentMain" : "text-redMain"} text-lg my-3`}>Memo</label>
+                    <label htmlFor="memo" className={`${type === TransactionType.INCOME ? "text-accentMain" : "text-redLight"} text-lg my-3`}>Memo</label>
                     <textarea onChange={(e) => setMemo(e.target.value)} id="memo" rows={4} className="text-light-textMain dark:text-dark-textMain bg-light-bgTertiary dark:bg-dark-bgTertiary rounded-lg p-2 w-11/12" placeholder="Memo..." /> 
                 </div>
                 <MainButton colorA={type === TransactionType.INCOME ? 'accentMain' : 'redMain'} colorB={type === TransactionType.INCOME ? 'accentSecondary' : 'redLight'} onClick={() => onSaveTransaction()} className="mx-auto mt-10">Save Transaction</MainButton>
