@@ -6,11 +6,12 @@ type Props = {
 }
 
 const WithAuth = ({children}: Props) => {
-    const [auth, setAuth] = useState(true)
+    const [auth, setAuth] = useState(false)
+
     return (
         <div>
             {!auth ? 
-            <Login /> 
+            <Login onSuccess={() => setAuth(true)} /> 
             :
             <>
                 {children}
