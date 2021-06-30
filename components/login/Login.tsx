@@ -27,7 +27,7 @@ const Login = ({onSuccess}: Props) => {
                 <LoginForm changeForm={() => setForm(FormType.SIGNUP)} onSuccess={() => onSuccess()} />
                 :
                 form === FormType.SIGNUP ? 
-                    <SignUpForm />
+                    <SignUpForm changeForm={() => setForm(FormType.LOGIN)} onSuccess={() => onSuccess()} />
                     :
                     <VerifyForm />
             }
