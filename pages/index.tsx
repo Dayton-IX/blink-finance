@@ -50,7 +50,7 @@ const Home = () => {
 
 	return (
 		<Layout>
-			<LineHeader>Good {greetingTime}, Max</LineHeader>
+			{/* <LineHeader>Good {greetingTime}, Max</LineHeader> */}
 			<DisplayBudget totalBudget={totalBudget} daysRemaining={daysRemaining} dailyBudget={dailyBudget} />
 			<Categories categories={categories} />
 		</Layout>

@@ -14,7 +14,7 @@ const DisplayBudget = ({totalBudget, daysRemaining, dailyBudget}: Props) => {
     return (
         <div className="flex flex-col items-center mt-10">
             <NewTransactionModal open={ntModalOpen} onClose={() => setNTModalOpen(false)} />
-            <h2 className="text-accentMain text-3xl">Remaining Budget</h2>
+            <h2 className="text-light-textMain dark:text-dark-textMain mb-2 text-3xl">Remaining Budget</h2>
             <div className="bg-light-bgSecondary dark:bg-dark-bgSecondary p-5 rounded-lg mt-5">
                 <p className="text-accentMain text-5xl">${totalBudget.toFixed(2)}</p>
             </div>
