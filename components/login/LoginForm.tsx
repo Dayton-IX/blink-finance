@@ -13,7 +13,12 @@ const LoginForm = ({onSuccess, changeForm}: Props) => {
 
     const onLogIn = async () => {
         setLoading(true)
-
+        try {
+            onSuccess()
+        } catch (e) {
+            console.error(e)
+        }
+        setLoading(false)
     }
 
     return (

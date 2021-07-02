@@ -11,11 +11,11 @@ const WithAuth = ({children}: Props) => {
     return (
         <div>
             {!auth ? 
-            <Login onSuccess={() => setAuth(true)} /> 
+                <Login onSuccess={() => setAuth(true)} /> 
             :
-            <>
-                {children}
-            </>
+                <>
+                    {children}
+                </>
             }
         </div>
     )
