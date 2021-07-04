@@ -45,7 +45,7 @@ const EditCategories = ({open, onClose}: Props) => {
             <h1 className="text-accentSecondary text-2xl">Categories</h1>
             <div className="flex flex-col w-11/12 mx-auto">
                 {categories.map((category, input) => (
-                    <Category category={category} />
+                    <Category key={category.id} category={category} />
                 ))}
             </div>
         </Modal>
