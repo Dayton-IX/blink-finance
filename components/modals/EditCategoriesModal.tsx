@@ -43,7 +43,7 @@ const EditCategories = ({open, onClose}: Props) => {
     return (
         <Modal open={open} onClose={() => onClose()}>
             <h1 className="text-accentSecondary text-2xl">Categories</h1>
-            <div className="flex flex-col w-11/12 mx-auto">
+            <div className="flex flex-col w-11/12 mx-auto mt-7">
                 {categories.map((category, input) => (
                     <Category key={category.id} category={category} />
                 ))}
