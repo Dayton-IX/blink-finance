@@ -19,3 +19,13 @@ export const userSignUp = async (email: string, password: string): Promise<Retur
         return null
     }
 }
+
+export const getUser = (): User | null => {
+    try {
+        const user = supabase.auth.user()
+        return user
+    } catch (e) {
+        console.error("getUser Error:", e)
+        return null
+    }
+}

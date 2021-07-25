@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getUser } from "../../scripts/auth";
 import Login from "../login/Login"
 
 type Props = {
@@ -7,6 +8,16 @@ type Props = {
 
 const WithAuth = ({children}: Props) => {
     const [auth, setAuth] = useState(false)
+
+    const verifyUser = () => {
+        const user = getUser()
+        console.log("User:", user)
+        user?.aud ? setAuth(true) : setAuth(false)
+    }
+
+    useEffect(() => {
+        verifyUser()
+    }, [])
 
     return (
         <div>
