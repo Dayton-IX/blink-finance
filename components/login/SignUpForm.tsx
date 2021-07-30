@@ -7,7 +7,7 @@ type Props = {
     onSuccess: Function
 }
 
-enum FormFields {
+enum FormField {
     EMAIL = "EMAIL",
     PASSWORD = "PASSWORD",
     CONFRIM_PASSWORD = "CONFIRM_PASSWORD"
@@ -15,7 +15,7 @@ enum FormFields {
 
 type FormError = {
     message: string,
-    fields?: FormFields[]
+    fields?: FormField[]
 }
 
 const SignUpForm = ({changeForm, onSuccess}: Props) => {
@@ -38,9 +38,9 @@ const SignUpForm = ({changeForm, onSuccess}: Props) => {
                             console.log("Sign Up Success!!")
                             onSuccess()
                         } else setFormError({message: "Something went wrong, please try again!", fields: []})
-                    } else setFormError({message: "Confirm Password does not match Password!", fields: [FormFields.PASSWORD, FormFields.CONFRIM_PASSWORD]})
-                } else setFormError({message: "Invalid Password!", fields: [FormFields.PASSWORD]})
-            } else setFormError({message: "Invalid Email!", fields: [FormFields.EMAIL]})
+                    } else setFormError({message: "Confirm Password does not match Password!", fields: [FormField.PASSWORD, FormField.CONFRIM_PASSWORD]})
+                } else setFormError({message: "Invalid Password!", fields: [FormField.PASSWORD]})
+            } else setFormError({message: "Invalid Email!", fields: [FormField.EMAIL]})
         } catch (e) {
             console.error(e)
             setFormError({message: "Something went wrong, please try again!", fields: []})
@@ -52,15 +52,16 @@ const SignUpForm = ({changeForm, onSuccess}: Props) => {
         <div>
            <h2 className="text-accentSecondary text-3xl ml-5 font-thin">Sign Up</h2>
             <form onSubmit={(e) => e.preventDefault()} className="flex flex-col mx-auto w-11/12 mt-5">
-                <label className={`${ formError.fields?.includes(FormFields.EMAIL) ? "text-redLight" : "text-light-textSecondary dark:text-dark-textSecondary" } ml-4`} htmlFor="email">Email</label>
-                <input onChange={(e) => setEmail(e.target.value)} type="email" className={`${ formError.fields?.includes(FormFields.EMAIL) ? "border-redLight" : "border-light-textSecondary" } text-light-textMain dark:text-dark-textMain border-b bg-transparent focus:outline-none px-2 w-5/6 mx-auto py-1 mb-5`} placeholder="email@example.com" />
+                <label className={`${ formError.fields?.includes(FormField.EMAIL) ? "text-redLight" : "text-light-textSecondary dark:text-dark-textSecondary" } ml-4`} htmlFor="email">Email</label>
+                <input onChange={(e) => setEmail(e.target.value)} type="email" className={`${ formError.fields?.includes(FormField.EMAIL) ? "border-redLight" : "border-light-textSecondary" } text-light-textMain dark:text-dark-textMain border-b bg-transparent focus:outline-none px-2 w-5/6 mx-auto py-1 mb-5`} placeholder="email@example.com" />
                 
-                <label className={`${ formError.fields?.includes(FormFields.PASSWORD) ? "text-redLight" : "text-light-textSecondary dark:text-dark-textSecondary" } ml-4`} htmlFor="email">Password</label>
-                <input onChange={(e) => setPassword(e.target.value)} type="password" className={`${ formError.fields?.includes(FormFields.PASSWORD) ? "border-redLight" : "border-light-textSecondary" } text-light-textMain dark:text-dark-textMain border-b bg-transparent focus:outline-none px-2 w-5/6 mx-auto py-1 mb-5`} placeholder="password" />
+                <label className={`${ formError.fields?.includes(FormField.PASSWORD) ? "text-redLight" : "text-light-textSecondary dark:text-dark-textSecondary" } ml-4`} htmlFor="email">Password</label>
+                <input onChange={(e) => setPassword(e.target.value)} type="password" className={`${ formError.fields?.includes(FormField.PASSWORD) ? "border-redLight" : "border-light-textSecondary" } text-light-textMain dark:text-dark-textMain border-b bg-transparent focus:outline-none px-2 w-5/6 mx-auto py-1 mb-5`} placeholder="password" />
                 
-                <label className={`${ formError.fields?.includes(FormFields.CONFRIM_PASSWORD) ? "text-redLight" : "text-light-textSecondary dark:text-dark-textSecondary" } ml-4`} htmlFor="email">Confirm Password</label>
-                <input onChange={(e) => setConfirmPassword(e.target.value)} type="password" className={`${ formError.fields?.includes(FormFields.CONFRIM_PASSWORD) ? "border-redLight" : "border-light-textSecondary" } text-light-textMain dark:text-dark-textMain border-b bg-transparent focus:outline-none px-2 w-5/6 mx-auto py-1 mb-5`} placeholder="confirm password" />
-                
+                <label className={`${ formError.fields?.includes(FormField.CONFRIM_PASSWORD) ? "text-redLight" : "text-light-textSecondary dark:text-dark-textSecondary" } ml-4`} htmlFor="email">Confirm Password</label>
+                <input onChange={(e) => setConfirmPassword(e.target.value)} type="password" className={`${ formError.fields?.includes(FormField.CONFRIM_PASSWORD) ? "border-redLight" : "border-light-textSecondary" } text-light-textMain dark:text-dark-textMain border-b bg-transparent focus:outline-none px-2 w-5/6 mx-auto py-1 mb-5`} placeholder="confirm password" />
+
+                <p className="text-redMain text-center mx-auto text-lg">{formError.message}</p>
                 <MainButton onClick={() => onSignUp()} loading={loading} className="px-20 mx-auto w-max" >Sign Up</MainButton>
             </form>
             <p className="text-accentSecondary text-lg flex flex-row justify-center mx-auto self-center text-center w-full my-7">• or •</p>
