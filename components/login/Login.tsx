@@ -17,6 +17,8 @@ enum FormType {
 
 const Login = ({onSuccess}: Props) => {
     const [form, setForm] = useState(FormType.LOGIN)
+    const [verifyEmail, setVerifyEmail] = useState('')
+
     return (
         <div className="w-screen h-screen">
             <div className="w-screen bg-gradient-to-bl from-accentMain to-accentSecondary py-20">
@@ -27,9 +29,9 @@ const Login = ({onSuccess}: Props) => {
                 <LoginForm changeForm={() => setForm(FormType.SIGNUP)} onSuccess={() => onSuccess()} />
                 :
                 form === FormType.SIGNUP ? 
-                    <SignUpForm changeForm={() => setForm(FormType.LOGIN)} onSuccess={() => onSuccess()} />
+                    <SignUpForm changeForm={() => setForm(FormType.LOGIN)} toVerify={(email: string) => {setForm(FormType.VERIFY); setVerifyEmail(email)}} onSuccess={() => onSuccess()} />
                     :
-                    <VerifyForm onSuccess={() => onSuccess()} />
+                    <VerifyForm email={verifyEmail} onSuccess={() => onSuccess()} />
             }
         </div>
     )

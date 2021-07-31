@@ -3,9 +3,10 @@ import MainButton from '../micro/MainButton'
 
 type Props = {
     onSuccess: Function
+    email: string
 }
 
-const VerifyForm = ({onSuccess}: Props) => {
+const VerifyForm = ({onSuccess, email}: Props) => {
     const [loading, setLoading] = useState(false)
     const [verifyCode, setVerifyCode] = useState('')
 
@@ -15,13 +16,8 @@ const VerifyForm = ({onSuccess}: Props) => {
 
     return (
         <div>
-            <h2 className="text-accentSecondary text-3xl ml-5 font-thin">Sign Up</h2>
-            <form onSubmit={(e) => e.preventDefault()} className="flex flex-col mx-auto w-11/12 mt-5">
-                <label className={`text-light-textSecondary dark:text-dark-textSecondary ml-4`} htmlFor="email">Verification Code</label>
-                <input onChange={(e) => setVerifyCode(e.target.value)} type="text" className={`text-light-textMain dark:text-dark-textMain border-b border-light-textSecondary bg-transparent focus:outline-none px-2 w-5/6 mx-auto py-1 mb-5`} placeholder="email@example.com" />
-                <MainButton onClick={() => onVerify()} className="px-20 mx-auto w-max" >Verify</MainButton>
-            </form>
-            <p className="text-accentSecondary text-lg flex flex-row justify-center mx-auto self-center text-center w-full my-7">• or •</p>
+            <h2 className="text-accentSecondary text-3xl ml-5 font-thin">Verify Your Email</h2>
+            <p className="text-light-textMain dark:text-dark-textMain text-center mx-auto w-5/6">A verification link has been sent to {email}! Please check your email and follow the link to sign in!</p>
         </div>
     )
 };

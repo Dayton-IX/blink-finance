@@ -5,6 +5,7 @@ import MainButton from "../micro/MainButton"
 type Props = {
     changeForm: Function
     onSuccess: Function
+    toVerify: Function
 }
 
 enum FormField {
@@ -18,7 +19,7 @@ type FormError = {
     fields?: FormField[]
 }
 
-const SignUpForm = ({changeForm, onSuccess}: Props) => {
+const SignUpForm = ({changeForm, onSuccess, toVerify}: Props) => {
     const [loading, setLoading] = useState(false)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -34,9 +35,9 @@ const SignUpForm = ({changeForm, onSuccess}: Props) => {
                         setFormError({message: '', fields: []})
                         const newUserData = await userSignUp(email, password)
                         console.log(newUserData)
-                        if (newUserData?.session) {
+                        if (newUserData?.user) {
                             console.log("Sign Up Success!!")
-                            onSuccess()
+                            toVerify(email)
                         } else if (newUserData?.error) setFormError({message: newUserData.error.message, fields: []})
                         else setFormError({message: "Something went wrong, please try again!", fields: []})
                     } else setFormError({message: "Confirm Password does not match Password!", fields: [FormField.PASSWORD, FormField.CONFRIM_PASSWORD]})
