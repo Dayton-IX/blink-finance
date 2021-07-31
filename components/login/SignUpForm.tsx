@@ -37,7 +37,8 @@ const SignUpForm = ({changeForm, onSuccess}: Props) => {
                         if (newUserData?.session) {
                             console.log("Sign Up Success!!")
                             onSuccess()
-                        } else setFormError({message: "Something went wrong, please try again!", fields: []})
+                        } else if (newUserData?.error) setFormError({message: newUserData.error.message, fields: []})
+                        else setFormError({message: "Something went wrong, please try again!", fields: []})
                     } else setFormError({message: "Confirm Password does not match Password!", fields: [FormField.PASSWORD, FormField.CONFRIM_PASSWORD]})
                 } else setFormError({message: "Invalid Password!", fields: [FormField.PASSWORD]})
             } else setFormError({message: "Invalid Email!", fields: [FormField.EMAIL]})

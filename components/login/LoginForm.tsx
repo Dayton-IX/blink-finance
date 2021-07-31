@@ -28,10 +28,13 @@ const LoginForm = ({onSuccess, changeForm}: Props) => {
         setLoading(true)
         try {
             const userData = await userSignIn(email, password)
+            console.log("signIn userData:", userData)
             if (userData?.session) onSuccess()
+            else if (userData?.error) setFormError({message: userData.error.message, fields: []})
             else setFormError({message: "Something went wrong, please try again!", fields: []})
         } catch (e) {
             console.error(e)
+            setFormError({message: "Something went wrong, please try again!", fields: []})
         }
         setLoading(false)
     }
