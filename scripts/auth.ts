@@ -33,6 +33,12 @@ export const userSignIn = async (email: string, password: string): Promise<Retur
     }
 }
 
+export const userSignOut = async (): Promise<Error | null> => {
+    const { error } = await supabase.auth.signOut()
+    console.log("userSignOut Error:", error) 
+    return error
+}
+
 export const getUser = (): User | null => {
     try {
         const user = supabase.auth.user()
