@@ -11,7 +11,6 @@ enum GreetingTime {
 }
 
 const Home = () => {
-	const [greetingTime, setGreetingTime] = useState<GreetingTime>(GreetingTime.AFTERNOON)
 	const [totalBudget, setTotalBudget] = useState<number>(0)
 	const [daysRemaining, setDaysRemaining] = useState<number>(0)
 	const [dailyBudget, setDailyBudget] = useState<number>(0)
@@ -50,7 +49,6 @@ const Home = () => {
 
 	return (
 		<Layout>
-			{/* <LineHeader>Good {greetingTime}, Max</LineHeader> */}
 			<DisplayBudget totalBudget={totalBudget} daysRemaining={daysRemaining} dailyBudget={dailyBudget} />
 			<Categories categories={categories} />
 		</Layout>
