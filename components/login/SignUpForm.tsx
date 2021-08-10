@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { userSignUp } from "../../scripts/auth";
+import { createUser } from "../../scripts/data";
 import MainButton from "../micro/MainButton"
 
 type Props = {
@@ -37,6 +38,7 @@ const SignUpForm = ({changeForm, onSuccess, toVerify}: Props) => {
                         console.log(newUserData)
                         if (newUserData?.user) {
                             console.log("Sign Up Success!!")
+                            await createUser(newUserData.user.id, email)
                             toVerify(email)
                         } else if (newUserData?.error) setFormError({message: newUserData.error.message, fields: []})
                         else setFormError({message: "Something went wrong, please try again!", fields: []})

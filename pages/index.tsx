@@ -3,6 +3,8 @@ import Categories from '../components/home/Categories'
 import DisplayBudget from '../components/home/DisplayBudget'
 import Layout from '../components/macro/Layout'
 import LineHeader from '../components/micro/LineHeader'
+import MainButton from '../components/micro/MainButton'
+import { createUser } from '../scripts/data'
 
 enum GreetingTime {
 	MORNING = 'Morning',
@@ -49,6 +51,7 @@ const Home = () => {
 
 	return (
 		<Layout>
+			{/* <MainButton onClick={() => createUser("4ed32bd8-ad73-4678-9802-d4554a568400", "max.dayton@protonmail.com")}>Create User</MainButton> */}
 			<DisplayBudget totalBudget={totalBudget} daysRemaining={daysRemaining} dailyBudget={dailyBudget} />
 			<Categories categories={categories} />
 		</Layout>
