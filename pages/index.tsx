@@ -1,10 +1,8 @@
-import { useState } from 'react'
-import Categories from '../components/home/Categories'
-import DisplayBudget from '../components/home/DisplayBudget'
+import { useEffect, useState } from 'react'
 import Layout from '../components/macro/Layout'
-import LineHeader from '../components/micro/LineHeader'
 import MainButton from '../components/micro/MainButton'
-import { createUser } from '../scripts/data'
+import { getUser } from '../scripts/auth'
+import { createUser, getUserData } from '../scripts/data'
 
 enum GreetingTime {
 	MORNING = 'Morning',
@@ -13,47 +11,32 @@ enum GreetingTime {
 }
 
 const Home = () => {
-	const [totalBudget, setTotalBudget] = useState<number>(0)
-	const [daysRemaining, setDaysRemaining] = useState<number>(0)
-	const [dailyBudget, setDailyBudget] = useState<number>(0)
-	const [categories, setCategories] = useState<Category[]>([
-		{
-			id: '1',
-			name: 'Rent',
-			monthlyAmount: 1650,
-			remainingAmount: 0
-		},
-		{
-			id: '2',
-			name: 'Food',
-			monthlyAmount: 400,
-			remainingAmount: 230
-		},
-		{
-			id: '3',
-			name: 'Gas',
-			monthlyAmount: 50,
-			remainingAmount: 20
-		},
-		{
-			id: '4',
-			name: 'Investments',
-			monthlyAmount: 50,
-			remainingAmount: 20
-		},
-		{
-			id: '5',
-			name: 'Other',
-			monthlyAmount: 100,
-			remainingAmount: 30
-		},
-	])
+	const [userData, setUserData] = useState<UserData | null>(null)
+
+	const grabUserData = async () => {
+		try {
+			const user = getUser()
+			if (user) {
+				const query = await getUserData(user.id)
+				if (query) {
+					if (query.data) {
+						console.log(query?.data[0])
+						setUserData(query?.data[0])
+					}
+				}
+			}
+		} catch (e) {
+			console.error("grabUserData Error: ", e)
+		}
+	}
+
+	useEffect(() => {
+		grabUserData()
+	}, [])
 
 	return (
 		<Layout>
 			{/* <MainButton onClick={() => createUser("4ed32bd8-ad73-4678-9802-d4554a568400", "max.dayton@protonmail.com")}>Create User</MainButton> */}
-			<DisplayBudget totalBudget={totalBudget} daysRemaining={daysRemaining} dailyBudget={dailyBudget} />
-			<Categories categories={categories} />
 		</Layout>
 	)
 }

@@ -9,3 +9,12 @@ enum TransactionType {
     INCOME = "INCOME",
     EXPENSE = "EXPENSE"
 }
+
+
+type UserData = {
+    id: string
+    userID: string
+    email: string
+    budgetPools?: string[]
+    currentPool?: string
+}
