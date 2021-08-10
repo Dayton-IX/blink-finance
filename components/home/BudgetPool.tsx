@@ -2,7 +2,11 @@ import { useState } from "react";
 import Categories from "./Categories";
 import DisplayBudget from "./DisplayBudget";
 
-const BudgetPool = () => {
+type Props = {
+    poolID: string
+}
+
+const BudgetPool = ({poolID}: Props) => {
     const [totalBudget, setTotalBudget] = useState<number>(0)
 	const [daysRemaining, setDaysRemaining] = useState<number>(0)
 	const [dailyBudget, setDailyBudget] = useState<number>(0)
