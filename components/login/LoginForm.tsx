@@ -50,7 +50,7 @@ const LoginForm = ({onSuccess, changeForm}: Props) => {
                 <input onChange={(e) => setPassword(e.target.value)} type="password" className={`${ formError.fields?.includes(FormField.PASSWORD) ? "border-redLight" : "border-light-textSecondary" } text-light-textMain dark:text-dark-textMain border-b bg-transparent focus:outline-none px-2 w-5/6 mx-auto py-1 mb-5`} placeholder="password" />
 
                 <p className="text-redMain text-center mx-auto text-lg">{formError.message}</p>
-                <MainButton loading={true} onClick={() => onLogIn()} className="px-20 mx-auto w-max" >Log In</MainButton>
+                <MainButton loading={loading} onClick={() => onLogIn()} className="px-20 mx-auto w-max" >Log In</MainButton>
             </form>
             <p className="text-accentSecondary text-lg flex flex-row justify-center mx-auto self-center text-center w-full my-7">• or •</p>
             <button onClick={() => changeForm()} className={`text-accentSecondary ring-accentSecondary ring-inset ring-2 transition-all rounded-md px-4 py-2 mx-auto flex focus:outline-none`}>Sign Up</button>
