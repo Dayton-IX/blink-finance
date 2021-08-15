@@ -18,7 +18,7 @@ const Navbar = () => {
                     <Logo color={Colors.accentMain} className="mr-2" width={25} height={29} /> 
                     <h2 className="text-accentMain text-xl">Blink</h2>
                 </div>
-                <div className="bg-light-bgTertiary dark:from-dark-bgTertiary rounded-full p-1 w-min">
+                <div className="bg-light-bgTertiary dark:from-dark-bgTertiary rounded-full p-1 flex flex-row items-center justify-center">
                     <button className="bg-none outline-none active:outline-none focus:outline-none" onClick={() => onMenuOpen()}>
                         <UserPlaceholder color={Colors.accentMain} />
                     </button>
