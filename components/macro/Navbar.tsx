@@ -12,8 +12,8 @@ const Navbar = () => {
     }
 
     return (
-        <nav>
-            <div className="flex flex-row px-3 py-2 w-screen bg-light-bgMain dark:bg-dark-bgMain border-b-2 border-accentMain justify-between">
+        <nav className="px-3 py-2 w-screen bg-light-bgMain dark:bg-dark-bgMain border-b-2 border-accentMain">
+            <div className="max-w-7xl flex flex-row justify-between mx-auto">
                 <div className="flex flex-row items-center">
                     <Logo color={Colors.accentMain} className="mr-2" width={25} height={29} /> 
                     <h2 className="text-accentMain text-xl">Blink</h2>

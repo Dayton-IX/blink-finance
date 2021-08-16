@@ -3,10 +3,9 @@ import AllPools from '../components/home/AllPools'
 import BudgetPool from '../components/home/BudgetPool'
 import Layout from '../components/macro/Layout'
 import Loader from '../components/micro/Loader'
-import MainButton from '../components/micro/MainButton'
 import { Colors } from '../constants/Colors'
 import { getUser } from '../scripts/auth'
-import { createUser, getUserData } from '../scripts/data'
+import { getUserData } from '../scripts/data'
 
 const Home = () => {
 	const [loading, setLoading] = useState<boolean>(true)
@@ -38,7 +37,6 @@ const Home = () => {
 
 	return (
 		<Layout>
-			{/* <MainButton onClick={() => createUser("4ed32bd8-ad73-4678-9802-d4554a568400", "max.dayton@protonmail.com")}>Create User</MainButton> */}
 			{loading ? <Loader color={Colors.accentMain} size={50} /> : 
 				<>
 					{userData?.currentPool ? <BudgetPool poolID={userData.currentPool} /> : 

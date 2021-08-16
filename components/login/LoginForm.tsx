@@ -35,8 +35,9 @@ const LoginForm = ({onSuccess, changeForm}: Props) => {
         } catch (e) {
             console.error(e)
             setFormError({message: "Something went wrong, please try again!", fields: []})
+        } finally {
+            setLoading(false)
         }
-        setLoading(false)
     }
 
     return (
