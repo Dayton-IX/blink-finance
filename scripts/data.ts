@@ -23,3 +23,11 @@ export const getUserData = async (userID: string): Promise<UserReturnData | null
         return null
     }
 }
+
+export const createBudgetPool = async (userID: string, name: string): Promise<void> => {
+    try {
+        const {data, error} = await supabase.from("BudgetPool").insert([{ name: name, users: [userID] }])
+    } catch (e) {
+        console.error("createBudgetPool Error:", e)
+    }
+}
