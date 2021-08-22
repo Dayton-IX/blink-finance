@@ -13,11 +13,6 @@ enum FormField {
     CONFRIM_PASSWORD = "CONFIRM_PASSWORD"
 }
 
-type FormError = {
-    message: string,
-    fields?: FormField[]
-}
-
 const LoginForm = ({onSuccess, changeForm}: Props) => {
     const [loading, setLoading] = useState(false)
     const [email, setEmail] = useState('')
