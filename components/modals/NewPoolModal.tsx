@@ -21,6 +21,9 @@ const NewPoolModal = ({open, onClose}: Props) => {
                 const user = getUser()
                 if (user) {
                     await createBudgetPool(user.id, name)
+                    setFormError({message: ''})
+                    setName("")
+                    onClose()
                 }
             } catch (e) {
                 console.error("handleNewPool Error:", e)
@@ -38,7 +41,7 @@ const NewPoolModal = ({open, onClose}: Props) => {
                 <input id="name" value={name} onChange={(e) => setName(e.target.value)} type="text" className="text-light-textMain dark:text-dark-textMain border rounded-lg border-light-textMain bg-transparent focus:outline-none px-2 w-3/4 my-5 text-xl mx-auto py-2 text-center" placeholder="Name" />
 
                 <p className="text-redMain text-center mx-auto text-lg">{formError.message}</p>
-                <MainButton onClick={() => handleNewPool()} >Create</MainButton>
+                <MainButton loading={loading} onClick={() => handleNewPool()} >Create</MainButton>
             </form>
         </Modal>
     )
