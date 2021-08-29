@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { getPoolData } from "../../scripts/data";
 import Categories from "./Categories";
 import DisplayBudget from "./DisplayBudget";
 
@@ -10,42 +11,14 @@ const BudgetPool = ({poolID}: Props) => {
     const [totalBudget, setTotalBudget] = useState<number>(0)
 	const [daysRemaining, setDaysRemaining] = useState<number>(0)
 	const [dailyBudget, setDailyBudget] = useState<number>(0)
-	const [categories, setCategories] = useState<Category[]>([
-		{
-			id: '1',
-			name: 'Rent',
-			monthlyAmount: 1650,
-			remainingAmount: 0
-		},
-		{
-			id: '2',
-			name: 'Food',
-			monthlyAmount: 400,
-			remainingAmount: 230
-		},
-		{
-			id: '3',
-			name: 'Gas',
-			monthlyAmount: 50,
-			remainingAmount: 20
-		},
-		{
-			id: '4',
-			name: 'Investments',
-			monthlyAmount: 50,
-			remainingAmount: 20
-		},
-		{
-			id: '5',
-			name: 'Other',
-			monthlyAmount: 100,
-			remainingAmount: 30
-		},
-	])
+	const [categories, setCategories] = useState<CategoryData[] | null>(null)
 
 	const fetchPoolData = async () => {
 		try {
-			
+			const result = await getPoolData(poolID)
+			if (result.data) {
+				setTotalBudget(result.data[0].totalBudget)
+			}
 		} catch (e) {
 			console.error("fetchPoolData Error: ", e)
 		}
