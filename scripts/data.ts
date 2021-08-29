@@ -41,7 +41,7 @@ export const getUserData = async (userID: string): Promise<UserReturnData> => {
         const { data, error } = await supabase.from('User').select().eq('userID', userID)
         return { data, error }
     } catch (e) {
-        console.error("getUser Error: ", e)
+        console.error("getUserData Error: ", e)
         return { data: null, error: e }
     }
 }
@@ -55,5 +55,20 @@ export const createBudgetPool = async (userID: string, name: string): Promise<vo
         console.log("New Budget Pool:", data, error)
     } catch (e) {
         console.error("createBudgetPool Error:", e)
+    }
+}
+
+type PoolReturnData = {
+    data?: PoolData[] | null
+    error?: PostgrestError | null | string
+}
+
+export const getPoolData = async (poolID: string): Promise<PoolReturnData> => {
+    try {
+        const { data, error } = await supabase.from('BudgetPool').select().eq('id', poolID)
+        return { data, error }
+    } catch (e) {
+        console.error("getPoolData Error: ", e)
+        return { data: null, error: e }
     }
 }

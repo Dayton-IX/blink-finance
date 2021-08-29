@@ -43,6 +43,14 @@ const BudgetPool = ({poolID}: Props) => {
 		},
 	])
 
+	const fetchPoolData = async () => {
+		try {
+			
+		} catch (e) {
+			console.error("fetchPoolData Error: ", e)
+		}
+	}
+
     return (
         <div>
             <DisplayBudget totalBudget={totalBudget} daysRemaining={daysRemaining} dailyBudget={dailyBudget} />
