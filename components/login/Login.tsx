@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { Colors } from "../../constants/Colors"
 import { Logo } from "../../constants/svgLib"
@@ -5,19 +6,20 @@ import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm"
 import VerifyForm from "./VerifyForm"
 
-type Props = {
-    onSuccess: Function
-}
-
 enum FormType {
     LOGIN,
     SIGNUP,
     VERIFY
 }
 
-const Login = ({onSuccess}: Props) => {
+const Login = () => {
     const [form, setForm] = useState(FormType.LOGIN)
     const [verifyEmail, setVerifyEmail] = useState('')
+    const router = useRouter()
+
+    const onSuccess = () => {
+        router.push('/')
+    }
 
     return (
         <div className="w-screen h-screen">

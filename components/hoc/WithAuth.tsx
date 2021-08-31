@@ -1,18 +1,20 @@
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { getUser } from "../../scripts/auth";
 import Login from "../login/Login"
+import Loader from "../micro/Loader";
 
 type Props = {
     children: any
 }
 
 const WithAuth = ({children}: Props) => {
-    const [auth, setAuth] = useState(false)
+    const router = useRouter()
 
     const verifyUser = () => {
         const user = getUser()
         console.log("User:", user)
-        user?.aud ? setAuth(true) : setAuth(false)
+        if (!user?.aud) router.push('/login')
     }
 
     useEffect(() => {
@@ -21,13 +23,7 @@ const WithAuth = ({children}: Props) => {
 
     return (
         <div>
-            {!auth ? 
-                <Login onSuccess={() => setAuth(true)} /> 
-            :
-                <>
-                    {children}
-                </>
-            }
+            {children}
         </div>
     )
 };
