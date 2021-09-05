@@ -14,7 +14,7 @@ const Categories = ({categories, poolID}: Props) => {
 
     return (
         <div className="flex flex-col mt-8">
-            <EditCategoriesModal open={modalOpen} onClose={() => setModalOpen(false)} />
+            <EditCategoriesModal open={modalOpen} onClose={() => setModalOpen(false)} initialCategories={categories} poolID={poolID} />
             <span className="flex flex-row">
                 <h2 className="text-light-textMain dark:text-dark-textMain text-xl ">Categories</h2>
                 <button onClick={() => setModalOpen(true)} className="ml-3 focus:outline-none"><Edit color={Colors.accentMain} /></button>

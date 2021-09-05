@@ -5,10 +5,12 @@ import MainButton from '../micro/MainButton';
 
 type Props = {
     open: boolean,
-    onClose: Function
+    onClose: Function,
+	poolID: string,
+	initialCategories: CategoryData[] | null
 }
 
-const EditCategories = ({open, onClose}: Props) => {
+const EditCategories = ({open, onClose, poolID, initialCategories}: Props) => {
     const [categories, setCategories] = useState<CategoryData[]>([
 		{
 			id: '1',
