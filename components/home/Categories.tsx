@@ -5,10 +5,11 @@ import MainButton from "../micro/MainButton";
 import EditCategoriesModal from "../modals/EditCategoriesModal"
 
 type Props = {
-    categories: CategoryData[] | null
+    categories: CategoryData[] | null,
+    poolID: string
 }
 
-const Categories = ({categories}: Props) => {
+const Categories = ({categories, poolID}: Props) => {
     const [modalOpen, setModalOpen] = useState(false)
 
     return (
@@ -18,7 +19,7 @@ const Categories = ({categories}: Props) => {
                 <h2 className="text-light-textMain dark:text-dark-textMain text-xl ">Categories</h2>
                 <button onClick={() => setModalOpen(true)} className="ml-3 focus:outline-none"><Edit color={Colors.accentMain} /></button>
             </span>
-            <div className="bg-light-bgSecondary dark:bg-dark-bgSecondary rounded-lg p-5 mt-5 grid grid-flow-row grid-cols-3">
+            <div className={`bg-light-bgSecondary dark:bg-dark-bgSecondary rounded-lg p-5 mt-5 ${categories? "grid grid-flow-row grid-cols-3" : "flex flex-col justify-center items-center"}`}>
                 {categories ? categories.map(category => {
                     return (
                         <div key={category.id} className="flex flex-col col-span-1 mx-auto text-center">

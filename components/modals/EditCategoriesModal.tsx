@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Modal from "../micro/Modal";
 import Category from "../inputs/Category"
+import MainButton from '../micro/MainButton';
 
 type Props = {
     open: boolean,
@@ -8,46 +9,33 @@ type Props = {
 }
 
 const EditCategories = ({open, onClose}: Props) => {
-    const [categories, setCategories] = useState<Category[]>([
-        {
+    const [categories, setCategories] = useState<CategoryData[]>([
+		{
 			id: '1',
+			budgetPool: '1',
 			name: 'Rent',
-			monthlyAmount: 1650,
-			remainingAmount: 0
-		},
-		{
-			id: '2',
-			name: 'Food',
-			monthlyAmount: 400,
-			remainingAmount: 230
-		},
-		{
-			id: '3',
-			name: 'Gas',
-			monthlyAmount: 50,
-			remainingAmount: 20
-		},
-		{
-			id: '4',
-			name: 'Investments',
-			monthlyAmount: 50,
-			remainingAmount: 20
-		},
-		{
-			id: '5',
-			name: 'Other',
-			monthlyAmount: 100,
-			remainingAmount: 30
-		},
-    ])
+			totalBudget: 1905,
+			totalSpent: 0
+		}
+	])
+
+	const handleNewCategory = async () => {
+
+	}
+
     return (
         <Modal open={open} onClose={() => onClose()}>
             <h1 className="text-accentSecondary text-2xl">Categories</h1>
-            <div className="flex flex-col w-11/12 mx-auto mt-7">
+            <table className="flex flex-col w-11/12 mx-auto mt-7">
+				<tr className="w-full flex flex-row border-accentMain border-b text-accentMain justify-around mx-auto">
+					<th className="text-center">Name</th>
+					<th className="text-center">Budget</th>
+				</tr>
                 {categories.map((category, input) => (
                     <Category key={category.id} category={category} />
                 ))}
-            </div>
+				<MainButton className="w-max mt-6 mx-auto text-center flex flex-row justify-center text-base py-2" onClick={() => handleNewCategory()}>+ New Category</MainButton>
+            </table>
         </Modal>
     )
 };

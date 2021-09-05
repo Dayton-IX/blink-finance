@@ -5,10 +5,11 @@ import NewTransactionModal from "../modals/NewTransactionModal";
 interface Props {
     totalBudget: number,
     daysRemaining: number,
-    dailyBudget: number
+    dailyBudget: number,
+    poolID: string
 }
 
-const DisplayBudget = ({totalBudget, daysRemaining, dailyBudget}: Props) => {
+const DisplayBudget = ({totalBudget, daysRemaining, dailyBudget, poolID}: Props) => {
     const [ntModalOpen, setNTModalOpen] = useState(false)
 
     return (
@@ -23,7 +24,7 @@ const DisplayBudget = ({totalBudget, daysRemaining, dailyBudget}: Props) => {
                 <p className="text-accentMain text-3xl">${dailyBudget.toFixed(2)}</p>
                 <p className="absolute text-light-textDark text-xl ml-28 -mt-3">/day</p>
             </div>
-            <MainButton className="mt-7" onClick={() => setNTModalOpen(true)} >+ Add Transaction</MainButton>
+            <MainButton className="mt-7" onClick={() => setNTModalOpen(true)} >+ New Transaction</MainButton>
         </div>
     )
 };

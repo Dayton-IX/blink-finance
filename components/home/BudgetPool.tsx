@@ -26,8 +26,8 @@ const BudgetPool = ({poolID}: Props) => {
 
     return (
         <div>
-            <DisplayBudget totalBudget={totalBudget} daysRemaining={daysRemaining} dailyBudget={dailyBudget} />
-			<Categories categories={categories} />
+            <DisplayBudget totalBudget={totalBudget} daysRemaining={daysRemaining} dailyBudget={dailyBudget} poolID={poolID} />
+			<Categories categories={categories} poolID={poolID} />
         </div>
     )
 };
