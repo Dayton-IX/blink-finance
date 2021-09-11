@@ -28,15 +28,15 @@ const EditCategories = ({open, onClose, poolID, initialCategories}: Props) => {
     return (
         <Modal open={open} onClose={() => onClose()}>
             <h1 className="text-accentSecondary text-2xl">Categories</h1>
-            <table className="flex flex-col w-11/12 mx-auto mt-7">
+            <table className="flex flex-col w-11/12 max-w-xl mx-auto mt-7">
 				<tr className="w-full flex flex-row border-accentMain border-b text-accentMain justify-around mx-auto">
 					<th className="text-center">Name</th>
 					<th className="text-center">Budget</th>
 				</tr>
-                {categories.map((category, input) => (
-                    <Category key={category.id} category={category} />
+                {categories.map((category, index) => (
+					<Category key={category.id} category={category} />
                 ))}
-				<MainButton className="w-max mt-6 mx-auto text-center flex flex-row justify-center text-base py-2" onClick={() => handleNewCategory()}>+ New Category</MainButton>
+				<MainButton className="w-max mt-10 mx-auto text-center flex flex-row justify-center text-base py-2" onClick={() => handleNewCategory()}>+ New Category</MainButton>
             </table>
         </Modal>
     )
